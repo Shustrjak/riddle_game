@@ -9,27 +9,28 @@ let rand = function rand() {
 // };
 function riddle (number){
     const hiddenNumber = number;
-    console.log('hiddenNumber: ', hiddenNumber);
+    console.log('hiddenNumber: ', hiddenNumber);  
     function hideNumber(number) {
         const num = prompt('Угадайте число от 1 до 100');
-        
         if (num > number) {
             alert('Загаданное число меньше');
-            hideNumber(number);
-        }else if (num < number) {
+        } else if (num < number) {
             alert('Загаданное число больше');
-            hideNumber(number);
         } else if (num == number) {
             alert('Вы угадали');
-            if (confirm('Сыграем еще?') == true) {
-                hideNumber(number);
-            } else {
+            let conf = confirm('Сыграем еще?')
+            if (conf == false) {
+                alert('Игра окончена');
                 window.close();
+            } else{
+                hideNumber(number);
             }
+            return;
         } else {
             alert('введите число!');
         }
-        hideNumber(hiddenNumber);
+        
+        hideNumber(number);
     }
     hideNumber(number);
     
